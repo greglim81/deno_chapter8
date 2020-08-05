@@ -10,8 +10,8 @@ router.post('/products',async (ctx,next) => {
     const price = data.price;
     
     /* you can validate values here e.g. if its empty
-if(...)
-*/
+    if(...)
+    */
 
     const id = await getProductsCollection()!.insertOne({
         name: name,
@@ -39,8 +39,8 @@ router.patch('/products/:productId', async (ctx) => {
     const data = await ctx.request.body({type: "json"}).value;
     const id = ctx.params.productId!;
 
-const updatedProduct = await getProductsCollection()!.updateOne(
-{_id: {$oid: id}},{$set: data}
+    const updatedProduct = await getProductsCollection()!.updateOne(
+        {_id: {$oid: id}},{$set: data}
     );
     
     ctx.response.body = {
@@ -55,8 +55,5 @@ router.delete('/products/:productId', async (ctx) => {
         message: "deleted " + id
     };
 });
-
-
-
 
 export default router;
